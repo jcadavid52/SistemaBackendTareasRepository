@@ -5,7 +5,6 @@ using SistemaGestionTareas.Api.Infrastructure;
 using SistemaGestionTareas.ApplicationCore.Dtos.Request;
 using SistemaGestionTareas.ApplicationCore.Dtos.Response;
 using SistemaGestionTareas.ApplicationCore.Services;
-using static Microsoft.EntityFrameworkCore.DbLoggerCategory.Database;
 
 namespace SistemaGestionTareas.Api.Controllers
 {
@@ -27,6 +26,13 @@ namespace SistemaGestionTareas.Api.Controllers
             var response = await authService.LoginAsync(loginRequest,cancellationToken);
 
             return Ok(response);
+        }
+
+        [HttpPost("register")]
+        public async Task<IActionResult> Register([FromBody] AuthRegisterRequestDto command, CancellationToken cancellationToken = default)
+        {
+            var response = await authService.RegisterAsync(command, cancellationToken);
+            return Created("", response);
         }
 
         [AllowAnonymous]

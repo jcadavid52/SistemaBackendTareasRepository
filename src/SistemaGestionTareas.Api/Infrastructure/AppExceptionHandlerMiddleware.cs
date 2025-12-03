@@ -13,9 +13,12 @@ namespace SistemaGestionTareas.Api.Infrastructure
             { typeof(NoAuthorizedException), HttpStatusCode.Unauthorized },
             { typeof(ArgumentException), HttpStatusCode.BadRequest },
             { typeof(ArgumentNullException), HttpStatusCode.BadRequest },
+            { typeof(DuplicateUserNameException), HttpStatusCode.Conflict },
+            { typeof(InvalidPasswordException), HttpStatusCode.BadRequest },
             { typeof(RefreshTokenException), HttpStatusCode.InternalServerError },
             { typeof(AccessTokenException), HttpStatusCode.InternalServerError },
             { typeof(NoFoundException), HttpStatusCode.NotFound },
+            { typeof(InternalRegisterException), HttpStatusCode.InternalServerError },
         };
 
         public AppExceptionHandlerMiddleware(RequestDelegate next, ILogger<AppExceptionHandlerMiddleware> logger)

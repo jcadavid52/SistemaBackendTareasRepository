@@ -25,7 +25,8 @@ namespace SistemaGestionTareas.Infrastructure.AuthProviders.Identity
             {
                 Firstname = user.Firstname,
                 LastName = user.LastName,
-                Email = user.Email
+                Email = user.Email,
+                UserName = user.Email
             };
         }
     }   

@@ -29,6 +29,10 @@ namespace SistemaGestionTareas.Api.Controllers
         }
 
         [HttpPost("register")]
+        [ProducesResponseType(typeof(AuthorizedResponseDto), StatusCodes.Status201Created)]
+        [ProducesResponseType(typeof(ApiResponse), StatusCodes.Status400BadRequest)]
+        [ProducesResponseType(typeof(ApiResponse), StatusCodes.Status500InternalServerError)]
+        [ProducesResponseType(typeof(ApiResponse), StatusCodes.Status409Conflict)]
         public async Task<IActionResult> Register([FromBody] AuthRegisterRequestDto command, CancellationToken cancellationToken = default)
         {
             var response = await authService.RegisterAsync(command, cancellationToken);
